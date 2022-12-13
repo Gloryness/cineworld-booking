@@ -1,6 +1,8 @@
 # cineworld-booking
 This project isn't serious. Educational purposes only!
 
+A live demo which stores data on a central database instead of JSON: https://replit.com/@Gloryness/Cineworld-Booking?v=1
+
 # About
 This initial project started from a simple task set by one of my teachers.
 I felt motivated so I decided to improve it and integrate it with cineworld's API and then I integrated other projects set into this one aswell.
