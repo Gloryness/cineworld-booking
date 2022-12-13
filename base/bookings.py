@@ -146,6 +146,7 @@ class Booking:
             "film": viewing[0],
             "when": time.strftime('%H:%M:%S @ %Y/%m/%d'),
             "adults": adults,
+            "students": students,
             "children": children,
             "price": price
         })

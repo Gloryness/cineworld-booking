@@ -57,7 +57,8 @@ def gather_input(
     req: list = [],
     notreq: list = [],
     condition: Optional[Callable] = None,
-    allow_exit: bool = False
+    allow_exit: bool = False,
+    error_msg: str = "Invalid input."
 ) -> Optional[T]:
     """
     Create an input and return the users input - it will catch for invalid inputs.
@@ -80,6 +81,8 @@ def gather_input(
         If the callable returns False, ask user again.
     allow_exit: bool
         Allow the user to type 'exit' to exit.
+    error_msg: str
+        The error message shown when an input is incorrect.
     
     Returns
     -------
@@ -103,22 +106,22 @@ def gather_input(
             if allow_exit and menu == 'exit':
                 return menu
         except:
-            print(f"{RED}Invalid input.{RESET}")
+            print(f"{RED}{error_msg}{RESET}")
             continue
         if req:
             if menu not in req:
-                print(f"{RED}Invalid input.{RESET}")
+                print(f"{RED}{error_msg}{RESET}")
                 continue
         elif notreq:
             if menu in notreq:
-                print(f"{RED}Invalid input.{RESET}")
+                print(f"{RED}{error_msg}{RESET}")
                 continue
         if condition:
             try:
                 if not condition(menu):
-                    print(f"{RED}Invalid input.{RESET}")
+                    print(f"{RED}{error_msg}{RESET}")
                     continue
             except:
-                print(f"{RED}Invalid input.{RESET}")
+                print(f"{RED}{error_msg}{RESET}")
                 continue
         return menu

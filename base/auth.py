@@ -45,7 +45,7 @@ class Authorization:
                                   f"{MAGENTA}>>> {GREEN}", req=[0, 1, 2])
             
             if option == 0:
-                username = gather_input(f"{YELLOW}Username: {GREEN}", datatype=str, notreq=[""])
+                username = gather_input(f"{YELLOW}Username: {GREEN}", datatype=str, condition=lambda k: k.lower() != 'exit', notreq=[""])
                 if self.cache.cached(username): # checking if username is already taken
                     print("Username is already taken! Sorry about that.\n")
                     continue
@@ -93,3 +93,6 @@ class Authorization:
     
     def get_account_renewal(self):
         return self.cache.json[self.username]["other"]["renewal"]
+    
+    def is_admin(self):
+        return "admin" in self.cache.json[self.username] and self.cache.json[self.username]["admin"] is True
