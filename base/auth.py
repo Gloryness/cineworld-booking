@@ -51,7 +51,7 @@ class Authorization:
                     continue
                 first_name = gather_input(f"{YELLOW}First Name: {GREEN}", datatype=str, notreq=[""])
                 last_name = gather_input(f"{YELLOW}Last Name: {GREEN}", datatype=str, notreq=[""])
-                password = gather_input(f"{YELLOW}Password: {GREEN}", datatype=str, condition=self.validify_password)
+                password = gather_input(f"{YELLOW}Password: {GREEN}", datatype=str, condition=self.validify_password, error_msg="Must be greater than length of 6 and contain 1 of lowercase, uppercase, digit & punctuation.")
                 print(f"You've successfully registered as {username}!")
                 self.cache.store(
                     {
